@@ -1,0 +1,53 @@
+
+.Navbar {
+    width: 100vw;
+    /*max-width: 100vw;*/
+    background-color: #0071dc;
+    color: #FFF;
+    box-sizing: border-box;
+}
+
+.TNavbar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.navbar-logo {
+    width: 200px;
+}
+
+.navbar-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+input {
+    height: 50px;
+    width: 400px;
+    border-radius: 20px;
+    elevation: 0;
+    border: 1px solid black;
+}
+
+span {
+    vertical-align: middle;
+}
+
+.navbar-divider {
+    background-color: #FFF;
+    width: 100%;
+    height: 1px;
+}
+
+.Secondary-Nav {
+    padding: 10px 25px;
+    display: flex;
+    justify-content: space-between;
+}

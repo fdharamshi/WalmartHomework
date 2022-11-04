@@ -1,0 +1,49 @@
+.Home {
+    padding: 20px;
+    width: 100vw;
+    box-sizing: border-box;
+}
+
+.Home-Banner{
+    width: 100%;
+    object-fit: contain;
+    border-radius: 25px;
+}
+
+.item-wrapper {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    justify-content: left;
+    flex-wrap: wrap;
+}
+
+.item {
+    margin-top: 20px;
+    width: 200px;
+}
+
+.item-image {
+    width: 100%;
+}
+
+.item-price {
+    color: green;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.item-old-price {
+    color: grey;
+    text-decoration: line-through;
+}
+
+.item-add-btn {
+    padding: 15px;
+    background-color: #0071dc;
+    color: #FFF;
+    font-size: 15px;
+    border-radius: 25px;
+    box-shadow: none;
+    border: 0;
+}

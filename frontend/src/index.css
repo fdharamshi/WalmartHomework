@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Bogle";
+  src: local('Bogle'), url(./assets/Bogle-Regular.otf) format('opentype');
+}
+@font-face {
+  font-family: "Bogle";
+  src: local('Bogle'), url(./assets/Bogle-Bold.otf) format('opentype');
+  font-weight: bold;
+}
+
+body {
+  margin: 0;
+  font-family: "Bogle";
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
