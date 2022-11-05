@@ -4,6 +4,8 @@ import NavBar from "./containers/NavBar/NavBar";
 import Footer from "./containers/Footer/Footer";
 import Home from "./containers/Home/Home";
 import ProductDetails from "./containers/ProductDetails/ProductDetails";
+import NotImplemented from "./containers/NotImplemented/NotImplemented";
+import Search from "./containers/SearchResults/Search";
 
 function App() {
 
@@ -19,6 +21,14 @@ function App() {
 
               </Route>
               <Route exact path="/product/:id" element={<ProductDetails />}>
+
+              </Route>
+
+              <Route exact path="/not-implemented" element={<NotImplemented />}>
+
+              </Route>
+
+              <Route exact path="/search" element={<Search />}>
 
               </Route>
               <Route

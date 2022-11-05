@@ -1,0 +1,9 @@
+.SearchPage {
+    width: 100vw;
+    margin: 20px;
+}
+
+.Search-Title {
+    font-weight: bold;
+    font-size: larger;
+}

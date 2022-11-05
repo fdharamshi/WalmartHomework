@@ -1,13 +1,19 @@
-import './Home.css';
 import {useEffect, useState} from "react";
 import ProductList from "../ProductList/ProductList";
+import {useLocation, useParams, useSearchParams} from "react-router-dom";
 
-const Home = () => {
+import './Search.css'
+
+const Search = () => {
 
     const [products, setProducts] = useState([]);
 
+    const location = useLocation()
+    const query = new URLSearchParams(location.search).get("query");
+
     useEffect(() => {
-        fetch('http://localhost:1234/')
+        setProducts([]);
+        fetch('http://localhost:1234/search')
             .then((response) => response.json())
             .then((data) => {
                 setProducts([]);
@@ -15,19 +21,18 @@ const Home = () => {
                     fetch('http://localhost:1234/lookup/'+data['products'][i])
                         .then((response) => response.json())
                         .then((data) => {
-                            setProducts(products => [...products, data]);
+                            setProducts(p => [...p, data]);
                         });
                 }
-
             });
     }, []);
 
     return (
-        <div className="Home">
-            <img src="https://i.ibb.co/rwbmdCB/Screenshot-2022-11-04-at-12-42-25-PM.png" alt="Screenshot-2022-11-04-at-12-42-25-PM" className="Home-Banner"/>
-            <ProductList products={products} />
+        <div className="SearchPage">
+            <span className="Search-Title">Search results for '{query}'</span>
+            <ProductList products={products}/>
         </div>
     );
 }
 
-export default Home;
+export default Search;

@@ -1,0 +1,19 @@
+#not-implemented-div {
+    width: 100vw;
+
+}
+
+#not-implemented-image {
+    width: 35vw;
+    object-fit: contain;
+    margin: auto;
+    display: block;
+    opacity: 0.5;
+}
+
+#not-implemented-p {
+    display: block;
+    text-align: center;
+    font-size: large;
+    opacity: 0.5;
+}

@@ -1,6 +1,6 @@
 import './ProductDetails.css'
 import {AiFillStar, AiOutlineStar} from "react-icons/ai";
-import {useParams} from "react-router-dom";
+import {Navigate, useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ProductList from "../ProductList/ProductList";
 
@@ -11,12 +11,23 @@ const ProductDetails = () => {
     const [recommendations, setRecommendations] = useState([]);
     const [selectedImage, setSelectedImage] = useState(null);
 
+    const [selectedColor, setSelectedColor] = useState(null);
+    const [selectedSize, setSelectedSize] = useState(null);
+
+    const navigator = useNavigate();
+
     useEffect(() => {
         fetch('http://localhost:1234/lookup/'+id)
             .then((response) => response.json())
             .then((data) => {
                 setProduct(data);
                 setSelectedImage(data['images'][0]);
+                if(data.colors) {
+                    setSelectedColor(data.colors[0]);
+                }
+                if(data.sizes) {
+                    setSelectedSize(data.sizes[0]);
+                }
             });
 
         setRecommendations([]);
@@ -39,7 +50,7 @@ const ProductDetails = () => {
             {product && <div className="Product-Details">
                 <div><div className="product-images">
                     {product['images'].map((image, idx) =>
-                        <img className="product-images-image" src={image} key={idx} onClick={()=>{
+                        <img className={selectedImage === image? "product-images-image-selected" : "product-images-image"} src={image} key={idx} onClick={()=>{
                             setSelectedImage(image);
                         }
                         }/> )}
@@ -69,30 +80,40 @@ const ProductDetails = () => {
                         <span className="pd-item-price">NOW ${product.price}</span>
                         {product.old_price && <span className="pd-item-old-price">${product.old_price}</span>}
                     </div>
-                    <button className="pd-item-add-btn">Add to Cart</button>
-                    <hr />
-                    <span style={{fontWeight: "bold"}}>Color: </span><span>Black</span>
-                    {product['colors'] && <div className="pd-color-options">
+                    <button className="pd-item-add-btn" onClick={()=>{
+                        navigator('/not-implemented');
+                    }
+                    }>Add to Cart</button>
+                    {product['colors'] && <><hr />
+                    <span style={{fontWeight: "bold"}}>Color: </span><span>{selectedColor}</span>
+                     <div className="pd-color-options">
                         {product['colors'].map((color) =>
-                            <div className="pd-color-option">
+                            <div className={selectedColor === color? "pd-color-option-selected" : "pd-color-option"} onClick={()=>{
+                                setSelectedColor(color)}
+                            }>
                                 <div className="pd-color" style={{backgroundColor: color}}></div>
                             </div>
                         )}
-                    </div>}
-                    <hr />
-                    <span style={{fontWeight: "bold"}}>Size: </span><span>1X</span>
-                    {product['sizes'] && <div className="pd-size-options">
+                    </div></>}
+                    {product['sizes'] && <><hr />
+                    <span style={{fontWeight: "bold"}}>Size: </span><span>{selectedSize}</span>
+                     <div className="pd-size-options">
                         {product['sizes'].map((size) =>
-                            <div className="pd-color-option">
+                            <div className={selectedSize === size? "pd-color-option-selected":"pd-color-option"} onClick={()=>{
+                                setSelectedSize(size)}
+                            }>
                                 {size}
                             </div>
                         )}
-                    </div>
-                    }
+                    </div></>}
+
                 </div></div>
             </div>}
             <hr />
-            {recommendations.length > 0 && <ProductList products={recommendations} />}
+            <div className="Recommendations">
+                <span className="Reco-Title">Recommendations based on your Choice:</span>
+                {recommendations.length > 0 && <ProductList products={recommendations} />}
+            </div>
             </>
     );
 
