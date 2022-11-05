@@ -1,10 +1,10 @@
 # Walmart Homework
 
-This is a project created for a homework assignment for Walmart.
+This is a project created for a homework assignment for Walmart.<br />
 Created by Femin Dharamshi (www.femindharamshi.com)
 
 ## Backend
-A minimal service for backend is created using Flask.
+A minimal service for backend is created using Flask.<br />
 It returns static data everytime.
 
 Endpoints:
@@ -15,9 +15,9 @@ Endpoints:
 - This runs on port `1234`
 
 ## Frontend
-Frontend was created using React.js
-Styling was completely done using CSS
-Libraries used: `react-router-dom` & `react-icons`
+Frontend was created using React.js<br />
+Styling was completely done using CSS<br />
+Libraries used: `react-router-dom` & `react-icons`<br />
 
 #### Spin Up the Frontend:
 - Run `npm install`
