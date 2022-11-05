@@ -3,6 +3,9 @@
 This is a project created for a homework assignment for Walmart.<br />
 Created by Femin Dharamshi (www.femindharamshi.com)
 
+![Demo](demo1.png)
+![Demo](demo2.png)
+
 ## Backend
 A minimal service for backend is created using Flask.<br />
 It returns static data everytime.
