@@ -2,7 +2,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import './NavBar.css';
 import logo from '../../assets/logo.png'
 import biglogo from '../../assets/big_logo.png'
-import {AiOutlineSearch, AiOutlineShoppingCart} from "react-icons/ai";
+import {AiOutlineHeart, AiOutlineSearch, AiOutlineShoppingCart, AiOutlineUser} from "react-icons/ai";
 import { BiGridAlt, BiStoreAlt} from 'react-icons/bi'
 import {IoLocationOutline} from "react-icons/io5";
 import {useRef} from "react";
@@ -11,6 +11,12 @@ const NavBar = () => {
 
     const textRef = useRef(null);
     const navigator = useNavigate();
+
+    const searchFunc = () => {
+        if(textRef.current.value !== undefined && textRef.current.value.length > 0) {
+            navigator('/search?query='+textRef.current.value);
+        }
+    }
 
     return(
         <div className="Navbar">
@@ -25,18 +31,24 @@ const NavBar = () => {
                 <div className="navbar-search-div">
                     <input ref={textRef} className="navbar-search-input" type="text" placeholder="Search everything at walmart online"/>
                     <button className="navbar-search-button" onClick={()=>{
-                        navigator('/search?query='+textRef.current.value);
+                        searchFunc();
                     }}><AiOutlineSearch /></button>
                 </div>
-                <div className="">
-                    <span>Reorder</span><br />
-                    <span>MyItems</span>
+                <div className="navbar-button">
+                    <AiOutlineHeart />
+                    <div>
+                        <span style={{fontSize: "small"}}>Reorder</span><br />
+                        <span>My Items</span>
+                    </div>
                 </div>
-                <div>
-                    <span>Sign In</span><br />
-                    <span>Account</span>
+                <div className="navbar-button">
+                    <AiOutlineUser />
+                    <div>
+                        <span style={{fontSize: "small"}}>Sign In</span><br />
+                        <span>Account</span>
+                    </div>
                 </div>
-                <div style={{fontSize: "xx-large"}}>
+                <div style={{fontSize: "xx-large"}} className="navbar-button">
                     <AiOutlineShoppingCart />
                 </div>
             </div>

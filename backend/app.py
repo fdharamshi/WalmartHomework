@@ -19,7 +19,10 @@ def search():  # put application's code here
 
 @app.route('/lookup/<id>')
 def lookup(id):  # put application's code here
-    response = jsonify(data['products'][id])
+    if int(id) < len(data['products']):
+        response = jsonify(data['products'][id])
+    else:
+        response = jsonify({"error": "Invalid ID"})
     response.headers.add("Access-Control-Allow-Origin", "*")
     return response
 

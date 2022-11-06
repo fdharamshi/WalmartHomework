@@ -17,9 +17,22 @@ const ProductDetails = () => {
     const navigator = useNavigate();
 
     useEffect(() => {
+
+        if(isNaN(id)) {
+
+            // Invalid ID in the query
+
+            navigator('/');
+        }
+
         fetch('http://localhost:1234/lookup/'+id)
             .then((response) => response.json())
             .then((data) => {
+
+                if(data.error) {
+                    navigator('/');
+                }
+
                 setProduct(data);
                 setSelectedImage(data['images'][0]);
                 if(data.colors) {
@@ -59,7 +72,7 @@ const ProductDetails = () => {
                     <img className="product-images-image" src={selectedImage}/>
                 </div>
                 <div><div className="product-information">
-                    <span className="pd-product-name">{product.name}</span>
+                    <span className="pd-product-name" data-testid="pd-name">{product.name}</span>
                     <div className="item-rating">
                         {(() => {
                             const stars = [];
