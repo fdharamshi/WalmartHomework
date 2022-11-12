@@ -26,3 +26,8 @@ Libraries used: `react-router-dom` & `react-icons`<br />
 - Run `npm install`
 - Make sure backend is on the same machine as this communicates over localhost
 - Run `npm start` to run the frontend. This will run on port `3000`
+
+#### Frontend Tests;
+- Tests are located in `/src/tests` folder in frontend
+- Use `npm test` to run all the tests.
+- WatchMode is disabled for this example.

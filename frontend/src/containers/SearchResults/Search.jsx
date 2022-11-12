@@ -1,6 +1,6 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import ProductList from "../ProductList/ProductList";
-import {useLocation, useParams, useSearchParams} from "react-router-dom";
+import { useLocation, useParams, useSearchParams } from "react-router-dom";
 
 import './Search.css'
 
@@ -17,8 +17,8 @@ const Search = () => {
             .then((response) => response.json())
             .then((data) => {
                 setProducts([]);
-                for(let i = 0; i < Math.min(10, data['products'].length); i++) {
-                    fetch('http://localhost:1234/lookup/'+data['products'][i])
+                for (let i = 0; i < Math.min(10, data['products'].length); i++) {
+                    fetch('http://localhost:1234/lookup/' + data['products'][i])
                         .then((response) => response.json())
                         .then((data) => {
                             setProducts(p => [...p, data]);
@@ -29,8 +29,8 @@ const Search = () => {
 
     return (
         <div className="SearchPage">
-            <span className="Search-Title">Search results for '{query}'</span>
-            <ProductList products={products}/>
+            <span className="Search-Title" data-testid="search-title">Search results for '{query}'</span>
+            <ProductList products={products} />
         </div>
     );
 }
